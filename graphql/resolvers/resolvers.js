@@ -3,21 +3,21 @@ const { v4: uuidv4 } = require('uuid');
 const data = require('../../fixtures/fixtures.json');
 
 const helpers = {
-    userExists: function(userId) {
-      return !!_.find(data.users, user => {
-        return user.id === userId;
-      });
-    },
-    forumExists: function(forumId) {
-      return !!_.find(data.forums, forum => {
-        return forum.id === forumId;
-      });
-    },
-    isJoinedForum: function(userId, forumId) {
-        return !!_.find(data.joinedForums, joinedForum => {
-            return joinedForum.userId === userId && joinedForum.forumId === forumId;
-        });
-    }
+  userExists: function(userId) {
+    return !!_.find(data.users, user => {
+      return user.id === userId;
+    });
+  },
+  forumExists: function(forumId) {
+    return !!_.find(data.forums, forum => {
+      return forum.id === forumId;
+    });
+  },
+  isJoinedForum: function(userId, forumId) {
+    return !!_.find(data.joinedForums, joinedForum => {
+      return joinedForum.userId === userId && joinedForum.forumId === forumId;
+    });
+  }
 };
 
 // Provide resolver functions for your schema fields
@@ -25,39 +25,39 @@ const resolvers = {
   Query: {
     allForums: () => data.forums,
     joinedForumsByUserId: (parent, args, context, info) => {
-        return _.filter(data.forums, forum => {
-            return helpers.isJoinedForum(args.userId, forum.id);
-        });
+      return _.filter(data.forums, forum => {
+        return helpers.isJoinedForum(args.userId, forum.id);
+      });
     },
     messagesByForumId: (parent, args, context, info) => {
-        let messages = _.cloneDeep(data.messages);
+      let messages = _.cloneDeep(data.messages);
 
-        let userMessages = _.filter(messages, message => {
-            if(message.forumId === args.forumId) {
-                let user = _.find(data.users, user => {
-                    return user.id === message.userId;
-                });
-                if(user) {
-                    message.user = user;
-                }
+      let userMessages = _.filter(messages, message => {
+        if(message.forumId === args.forumId) {
+          let user = _.find(data.users, user => {
+            return user.id === message.userId;
+          });
+          if(user) {
+            message.user = user;
+          }
 
-                return true;
-            } else {
-                return false;
-            }
-        });
+          return true;
+        } else {
+          return false;
+        }
+      });
 
-        return _.sortBy(userMessages, message => {
-            if(args.sortOrder === 'DESC') {
-                return -message.timestamp;
-            } else {
-                return message.timestamp;
-            }
-        });
+      return _.sortBy(userMessages, message => {
+        if(args.sortOrder === 'DESC') {
+          return -message.timestamp;
+        } else {
+          return message.timestamp;
+        }
+      });
     },
     membersByForumId: (parent, args, context, info) => {
       return _.filter(data.users, user => {
-          return helpers.isJoinedForum(user.id, args.forumId);
+        return helpers.isJoinedForum(user.id, args.forumId);
       });
     },
   },
