@@ -1,0 +1,75 @@
+{
+    "users": [
+        {
+            "id": "1",
+            "firstName": "John",
+            "lastName": "Smith",
+            "picture": "/img/any-picture1.jpg"
+        },
+        {
+            "id": "2",
+            "firstName": "Jack",
+            "lastName": "Frost",
+            "picture": "/img/any-picture2.jpg"
+        }
+    ],
+    "forums": [
+        {
+            "id": "1",
+            "name": "Forum about video games",
+            "description": "Long description about video games forum"
+        },
+        {
+            "id": "2",
+            "name": "Forum about software development",
+            "description": "Long description about software development forum"
+        }
+    ],
+    "joinedForums": [
+        {
+            "id": "1",
+            "userId": "1",
+            "forumId": "1"
+        },
+        {
+            "id": "2",
+            "userId": "2",
+            "forumId": "1"
+        },
+        {
+            "id": "3",
+            "userId": "2",
+            "forumId": "2"
+        }
+    ],
+    "messages": [
+        {
+            "id": "1",
+            "userId": "1",
+            "forumId": "1",
+            "timestamp": 1603895623,
+            "content": "Hi everyone! How are you doing?"
+        },
+        {
+            "id": "2",
+            "userId": "1",
+            "forumId": "1",
+            "timestamp": 1603895643,
+            "content": "Who wants to talk about video games?"
+        },
+        {
+            "id": "3",
+            "userId": "2",
+            "forumId": "1",
+            "timestamp": 1603895663,
+            "content": "Sure. Why not."
+        },
+        {
+            "id": "4",
+            "userId": "2",
+            "forumId": "2",
+            "timestamp": 1603895663,
+            "content": "Hi there! Any developer available to talk?"
+        }
+    ]
+}
