@@ -14,32 +14,32 @@ const typeDefs = gql`
     postMessage(userId: ID!, forumId: ID!, content: String!): postMessageResponse
   }
   type User {
-    id: ID!,
-    firstName: String,
-    lastName: String,
+    id: ID!
+    firstName: String
+    lastName: String
     picture: String
   }
   type Forum {
-    id: ID!,
-    name: String,
+    id: ID!
+    name: String
     description: String
   }
   type Message {
-    id: ID!,
-    user: User,
-    forumId: ID!,
-    timestamp: Int,
+    id: ID!
+    user: User
+    forumId: ID!
+    timestamp: Int
     content: String
   }
   type createForumResponse {
-    statusText: String,
+    statusText: String
     forum: Forum
   }
   type joinForumResponse {
     statusText: String
   }
   type postMessageResponse {
-    statusText: String,
+    statusText: String
     message: Message
   }
 `;
