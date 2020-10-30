@@ -9,9 +9,9 @@ const typeDefs = gql`
     membersByForumId(forumId: ID = 0): [User]
   }
   type Mutation {
-    createForum(userId: ID!, name: String!, description: String): createForumResponse
-    joinForum(userId: ID!, forumId: ID!): joinForumResponse
-    postMessage(userId: ID!, forumId: ID!, content: String!): postMessageResponse
+    createForum(userId: ID!, name: String!, description: String): CreateForumResponse
+    joinForum(userId: ID!, forumId: ID!): JoinForumResponse
+    postMessage(userId: ID!, forumId: ID!, content: String!): PostMessageResponse
   }
   type User {
     id: ID!
@@ -31,14 +31,14 @@ const typeDefs = gql`
     timestamp: Int
     content: String
   }
-  type createForumResponse {
+  type CreateForumResponse {
     statusText: String
     forum: Forum
   }
-  type joinForumResponse {
+  type JoinForumResponse {
     statusText: String
   }
-  type postMessageResponse {
+  type PostMessageResponse {
     statusText: String
     message: Message
   }
