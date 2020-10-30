@@ -133,7 +133,7 @@ const resolvers = {
 
       let user = _.find(data.users, user => user.id === args.userId);
 
-      return {statusText: "Message post successful", message: message};
+      return {statusText: "Message post successful", message: _.assign({user: user}, message)};
     }
   }
 };

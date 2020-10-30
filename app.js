@@ -10,6 +10,12 @@ const resolvers = require('./graphql/resolvers/resolvers');
 const server = new ApolloServer({ typeDefs, resolvers });
 
 const app = express();
+
+app.use(function(req, res, next) {
+  // here, we should validate any auth token, etc.
+  next();
+});
+
 server.applyMiddleware({ app });
 console.log(`GraphQL API available at ${server.graphqlPath}`);
 
